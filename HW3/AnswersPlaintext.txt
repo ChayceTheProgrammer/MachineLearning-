@@ -1,0 +1,342 @@
+Output Log
+
+4c)
+[ommited breakdown from report as its visible in the code]
+\begin{verbatim}
+def evaluation(model, best_model_state, best_val_acc):
+    """
+    Evaluates the performance of a trained model on the test dataset.
+    
+    Args:
+        model (nn.Module): The neural network model to evaluate
+        best_model_state (dict): The saved state dictionary of the best model
+        best_val_acc (float): The best validation accuracy achieved during training
+        
+    Returns:
+        float: The classification accuracy on the test set
+    """
+    # Step 1: Load test data
+    test_raw_data, test_labels = load_data(os.path.join(data_dir, test_filename))
+    
+    # Step 2: Preprocess raw data to extract features
+    test_features = prepare_X(test_raw_data)
+    
+    # Step 3: Preprocess labels for all three classes (0,1,2)
+    test_y_all, _ = prepare_y(test_labels)
+    
+    # Step 4: Convert numpy arrays to PyTorch tensors
+    test_X_all = torch.tensor(test_features, dtype=torch.float32)
+    test_y_all = torch.tensor(test_y_all, dtype=torch.long)
+    
+    # Step 5: Load the best validation model
+    model.load_state_dict(best_model_state)
+    model.eval()  # Set the model to evaluation mode
+    
+    # Step 6: Evaluate classification accuracy on the test set
+    with torch.no_grad():
+        outputs = model(test_X_all)
+        _, predicted = torch.max(outputs, 1)
+        total = test_y_all.size(0)
+        correct = (predicted == test_y_all).sum().item()
+        test_accuracy = correct / total
+    
+    # Print results
+    print(f"Best validation accuracy: {best_val_acc:.4f}")
+    print(f"Test accuracy: {test_accuracy:.4f}")
+    
+    return test_accuracy
+\end{verbatim}
+
+c)
+Output:
+Hidden Size: 3
+C:\Users\Chayce\AppData\Local\Microsoft\WindowsApps\python3.13.exe C:\Users\Chayce\Documents\CollegeFinalSemester\MachineLearning\HW3\code\main.py 
+Epoch [1/50], Loss: 1.2079, Val Accuracy: 0.2556
+Epoch [2/50], Loss: 1.1479, Val Accuracy: 0.2556
+Epoch [3/50], Loss: 1.1174, Val Accuracy: 0.4048
+Epoch [4/50], Loss: 1.0921, Val Accuracy: 0.4000
+Epoch [5/50], Loss: 1.0939, Val Accuracy: 0.4000
+Epoch [6/50], Loss: 1.0904, Val Accuracy: 0.4000
+Epoch [7/50], Loss: 1.0795, Val Accuracy: 0.4000
+Epoch [8/50], Loss: 1.0794, Val Accuracy: 0.4000
+Epoch [9/50], Loss: 1.0726, Val Accuracy: 0.4000
+Epoch [10/50], Loss: 1.0648, Val Accuracy: 0.4000
+Epoch [11/50], Loss: 1.0557, Val Accuracy: 0.4000
+Epoch [12/50], Loss: 1.0560, Val Accuracy: 0.4000
+Epoch [13/50], Loss: 1.0463, Val Accuracy: 0.4000
+Epoch [14/50], Loss: 1.0333, Val Accuracy: 0.4048
+Epoch [15/50], Loss: 1.0222, Val Accuracy: 0.4762
+Epoch [16/50], Loss: 1.0168, Val Accuracy: 0.5952
+Epoch [17/50], Loss: 1.0100, Val Accuracy: 0.6270
+Epoch [18/50], Loss: 1.0047, Val Accuracy: 0.6349
+Epoch [19/50], Loss: 0.9963, Val Accuracy: 0.6571
+Epoch [20/50], Loss: 0.9830, Val Accuracy: 0.6857
+Epoch [21/50], Loss: 0.9811, Val Accuracy: 0.6857
+Epoch [22/50], Loss: 0.9879, Val Accuracy: 0.6873
+Epoch [23/50], Loss: 0.9834, Val Accuracy: 0.6873
+Epoch [24/50], Loss: 0.9763, Val Accuracy: 0.6873
+Epoch [25/50], Loss: 0.9506, Val Accuracy: 0.6937
+Epoch [26/50], Loss: 0.9400, Val Accuracy: 0.6921
+Epoch [27/50], Loss: 0.9545, Val Accuracy: 0.6984
+Epoch [28/50], Loss: 0.9273, Val Accuracy: 0.6968
+Epoch [29/50], Loss: 0.9271, Val Accuracy: 0.6952
+Epoch [30/50], Loss: 0.9379, Val Accuracy: 0.6952
+Epoch [31/50], Loss: 0.9271, Val Accuracy: 0.6937
+Epoch [32/50], Loss: 0.9196, Val Accuracy: 0.7000
+Epoch [33/50], Loss: 0.9270, Val Accuracy: 0.6952
+Epoch [34/50], Loss: 0.9095, Val Accuracy: 0.6984
+Epoch [35/50], Loss: 0.9143, Val Accuracy: 0.6937
+Epoch [36/50], Loss: 0.9288, Val Accuracy: 0.6937
+Epoch [37/50], Loss: 0.8999, Val Accuracy: 0.6952
+Epoch [38/50], Loss: 0.9191, Val Accuracy: 0.6889
+Epoch [39/50], Loss: 0.9060, Val Accuracy: 0.6968
+Epoch [40/50], Loss: 0.9049, Val Accuracy: 0.6968
+Epoch [41/50], Loss: 0.9000, Val Accuracy: 0.6952
+Epoch [42/50], Loss: 0.8929, Val Accuracy: 0.6952
+Epoch [43/50], Loss: 0.8912, Val Accuracy: 0.6984
+Epoch [44/50], Loss: 0.9111, Val Accuracy: 0.6905
+Epoch [45/50], Loss: 0.9006, Val Accuracy: 0.6968
+Epoch [46/50], Loss: 0.8928, Val Accuracy: 0.6937
+Epoch [47/50], Loss: 0.8981, Val Accuracy: 0.6952
+Epoch [48/50], Loss: 0.9000, Val Accuracy: 0.6984
+Epoch [49/50], Loss: 0.9044, Val Accuracy: 0.6921
+Epoch [50/50], Loss: 0.8870, Val Accuracy: 0.6952
+Best validation accuracy: 0.7000
+Test accuracy: 0.7040
+Training complete. Best model saved as best_mlp_model.pth.
+
+Process finished with exit code 0
+
+
+#Hidden Size: 32 Output
+C:\Users\Chayce\AppData\Local\Microsoft\WindowsApps\python3.13.exe C:\Users\Chayce\Documents\CollegeFinalSemester\MachineLearning\HW3\code\main.py 
+Epoch [1/50], Loss: 1.0985, Val Accuracy: 0.6635
+Epoch [2/50], Loss: 1.0228, Val Accuracy: 0.7048
+Epoch [3/50], Loss: 0.9355, Val Accuracy: 0.7016
+Epoch [4/50], Loss: 0.8395, Val Accuracy: 0.7048
+Epoch [5/50], Loss: 0.7510, Val Accuracy: 0.7048
+Epoch [6/50], Loss: 0.6771, Val Accuracy: 0.7048
+Epoch [7/50], Loss: 0.6363, Val Accuracy: 0.7889
+Epoch [8/50], Loss: 0.6083, Val Accuracy: 0.8095
+Epoch [9/50], Loss: 0.5743, Val Accuracy: 0.8333
+Epoch [10/50], Loss: 0.5444, Val Accuracy: 0.8286
+Epoch [11/50], Loss: 0.5256, Val Accuracy: 0.8698
+Epoch [12/50], Loss: 0.5258, Val Accuracy: 0.8683
+Epoch [13/50], Loss: 0.5074, Val Accuracy: 0.8714
+Epoch [14/50], Loss: 0.5034, Val Accuracy: 0.8730
+Epoch [15/50], Loss: 0.4668, Val Accuracy: 0.8778
+Epoch [16/50], Loss: 0.4751, Val Accuracy: 0.8746
+Epoch [17/50], Loss: 0.4565, Val Accuracy: 0.8746
+Epoch [18/50], Loss: 0.4596, Val Accuracy: 0.8714
+Epoch [19/50], Loss: 0.4654, Val Accuracy: 0.8794
+Epoch [20/50], Loss: 0.4375, Val Accuracy: 0.8746
+Epoch [21/50], Loss: 0.4515, Val Accuracy: 0.8730
+Epoch [22/50], Loss: 0.4325, Val Accuracy: 0.8714
+Epoch [23/50], Loss: 0.4375, Val Accuracy: 0.8746
+Epoch [24/50], Loss: 0.4369, Val Accuracy: 0.8714
+Epoch [25/50], Loss: 0.4304, Val Accuracy: 0.8730
+Epoch [26/50], Loss: 0.4257, Val Accuracy: 0.8730
+Epoch [27/50], Loss: 0.4149, Val Accuracy: 0.8746
+Epoch [28/50], Loss: 0.4074, Val Accuracy: 0.8762
+Epoch [29/50], Loss: 0.4293, Val Accuracy: 0.8683
+Epoch [30/50], Loss: 0.4146, Val Accuracy: 0.8730
+Epoch [31/50], Loss: 0.4201, Val Accuracy: 0.8794
+Epoch [32/50], Loss: 0.4061, Val Accuracy: 0.8794
+Epoch [33/50], Loss: 0.4068, Val Accuracy: 0.8778
+Epoch [34/50], Loss: 0.4024, Val Accuracy: 0.8762
+Epoch [35/50], Loss: 0.3936, Val Accuracy: 0.8825
+Epoch [36/50], Loss: 0.4001, Val Accuracy: 0.8810
+Epoch [37/50], Loss: 0.4100, Val Accuracy: 0.8810
+Epoch [38/50], Loss: 0.3954, Val Accuracy: 0.8810
+Epoch [39/50], Loss: 0.3888, Val Accuracy: 0.8810
+Epoch [40/50], Loss: 0.4004, Val Accuracy: 0.8825
+Epoch [41/50], Loss: 0.3863, Val Accuracy: 0.8810
+Epoch [42/50], Loss: 0.3930, Val Accuracy: 0.8746
+Epoch [43/50], Loss: 0.3961, Val Accuracy: 0.8825
+Epoch [44/50], Loss: 0.3843, Val Accuracy: 0.8810
+Epoch [45/50], Loss: 0.3897, Val Accuracy: 0.8810
+Epoch [46/50], Loss: 0.3993, Val Accuracy: 0.8794
+Epoch [47/50], Loss: 0.3772, Val Accuracy: 0.8778
+Epoch [48/50], Loss: 0.4074, Val Accuracy: 0.8810
+Epoch [49/50], Loss: 0.3968, Val Accuracy: 0.8762
+Epoch [50/50], Loss: 0.4000, Val Accuracy: 0.8810
+Best validation accuracy: 0.8825
+Test accuracy: 0.8660
+Training complete. Best model saved as best_mlp_model.pth.
+
+Process finished with exit code 0
+
+Hidden Size: 64
+C:\Users\Chayce\AppData\Local\Microsoft\WindowsApps\python3.13.exe C:\Users\Chayce\Documents\CollegeFinalSemester\MachineLearning\HW3\code\main.py 
+Epoch [1/50], Loss: 1.0482, Val Accuracy: 0.7032
+Epoch [2/50], Loss: 0.8464, Val Accuracy: 0.7937
+Epoch [3/50], Loss: 0.6398, Val Accuracy: 0.8683
+Epoch [4/50], Loss: 0.5324, Val Accuracy: 0.8762
+Epoch [5/50], Loss: 0.4683, Val Accuracy: 0.8825
+Epoch [6/50], Loss: 0.4341, Val Accuracy: 0.8683
+Epoch [7/50], Loss: 0.4208, Val Accuracy: 0.8762
+Epoch [8/50], Loss: 0.3996, Val Accuracy: 0.8730
+Epoch [9/50], Loss: 0.3844, Val Accuracy: 0.8762
+Epoch [10/50], Loss: 0.3723, Val Accuracy: 0.8762
+Epoch [11/50], Loss: 0.3612, Val Accuracy: 0.8698
+Epoch [12/50], Loss: 0.3752, Val Accuracy: 0.8667
+Epoch [13/50], Loss: 0.3483, Val Accuracy: 0.8667
+Epoch [14/50], Loss: 0.3578, Val Accuracy: 0.8746
+Epoch [15/50], Loss: 0.3570, Val Accuracy: 0.8683
+Epoch [16/50], Loss: 0.3487, Val Accuracy: 0.8794
+Epoch [17/50], Loss: 0.3506, Val Accuracy: 0.8762
+Epoch [18/50], Loss: 0.3413, Val Accuracy: 0.8810
+Epoch [19/50], Loss: 0.3488, Val Accuracy: 0.8730
+Epoch [20/50], Loss: 0.3359, Val Accuracy: 0.8778
+Epoch [21/50], Loss: 0.3175, Val Accuracy: 0.8762
+Epoch [22/50], Loss: 0.3363, Val Accuracy: 0.8730
+Epoch [23/50], Loss: 0.3319, Val Accuracy: 0.8762
+Epoch [24/50], Loss: 0.3217, Val Accuracy: 0.8683
+Epoch [25/50], Loss: 0.3301, Val Accuracy: 0.8825
+Epoch [26/50], Loss: 0.3375, Val Accuracy: 0.8810
+Epoch [27/50], Loss: 0.3164, Val Accuracy: 0.8778
+Epoch [28/50], Loss: 0.3273, Val Accuracy: 0.8746
+Epoch [29/50], Loss: 0.3256, Val Accuracy: 0.8778
+Epoch [30/50], Loss: 0.3262, Val Accuracy: 0.8778
+Epoch [31/50], Loss: 0.3319, Val Accuracy: 0.8746
+Epoch [32/50], Loss: 0.3144, Val Accuracy: 0.8746
+Epoch [33/50], Loss: 0.3172, Val Accuracy: 0.8794
+Epoch [34/50], Loss: 0.3114, Val Accuracy: 0.8810
+Epoch [35/50], Loss: 0.3279, Val Accuracy: 0.8778
+Epoch [36/50], Loss: 0.3143, Val Accuracy: 0.8746
+Epoch [37/50], Loss: 0.3189, Val Accuracy: 0.8810
+Epoch [38/50], Loss: 0.3201, Val Accuracy: 0.8730
+Epoch [39/50], Loss: 0.3148, Val Accuracy: 0.8778
+Epoch [40/50], Loss: 0.3187, Val Accuracy: 0.8810
+Epoch [41/50], Loss: 0.3154, Val Accuracy: 0.8810
+Epoch [42/50], Loss: 0.3164, Val Accuracy: 0.8778
+Epoch [43/50], Loss: 0.3134, Val Accuracy: 0.8794
+Epoch [44/50], Loss: 0.3126, Val Accuracy: 0.8778
+Epoch [45/50], Loss: 0.3210, Val Accuracy: 0.8810
+Epoch [46/50], Loss: 0.3149, Val Accuracy: 0.8762
+Epoch [47/50], Loss: 0.3180, Val Accuracy: 0.8762
+Epoch [48/50], Loss: 0.3130, Val Accuracy: 0.8778
+Epoch [49/50], Loss: 0.3141, Val Accuracy: 0.8841
+Epoch [50/50], Loss: 0.3216, Val Accuracy: 0.8794
+Best validation accuracy: 0.8841
+Test accuracy: 0.8611
+Training complete. Best model saved as best_mlp_model.pth.
+
+Process finished with exit code 0
+
+
+Hidden Size 128:
+C:\Users\Chayce\AppData\Local\Microsoft\WindowsApps\python3.13.exe C:\Users\Chayce\Documents\CollegeFinalSemester\MachineLearning\HW3\code\main.py 
+Epoch [1/50], Loss: 0.9339, Val Accuracy: 0.8556
+Epoch [2/50], Loss: 0.5512, Val Accuracy: 0.8841
+Epoch [3/50], Loss: 0.4162, Val Accuracy: 0.8810
+Epoch [4/50], Loss: 0.3834, Val Accuracy: 0.8667
+Epoch [5/50], Loss: 0.3660, Val Accuracy: 0.8683
+Epoch [6/50], Loss: 0.3378, Val Accuracy: 0.8825
+Epoch [7/50], Loss: 0.3424, Val Accuracy: 0.8778
+Epoch [8/50], Loss: 0.3351, Val Accuracy: 0.8746
+Epoch [9/50], Loss: 0.3331, Val Accuracy: 0.8667
+Epoch [10/50], Loss: 0.3142, Val Accuracy: 0.8667
+Epoch [11/50], Loss: 0.3337, Val Accuracy: 0.8698
+Epoch [12/50], Loss: 0.3122, Val Accuracy: 0.8746
+Epoch [13/50], Loss: 0.3164, Val Accuracy: 0.8714
+Epoch [14/50], Loss: 0.3132, Val Accuracy: 0.8698
+Epoch [15/50], Loss: 0.3129, Val Accuracy: 0.8746
+Epoch [16/50], Loss: 0.3152, Val Accuracy: 0.8730
+Epoch [17/50], Loss: 0.3075, Val Accuracy: 0.8778
+Epoch [18/50], Loss: 0.3006, Val Accuracy: 0.8778
+Epoch [19/50], Loss: 0.3090, Val Accuracy: 0.8778
+Epoch [20/50], Loss: 0.2948, Val Accuracy: 0.8746
+Epoch [21/50], Loss: 0.2903, Val Accuracy: 0.8778
+Epoch [22/50], Loss: 0.2935, Val Accuracy: 0.8746
+Epoch [23/50], Loss: 0.2987, Val Accuracy: 0.8730
+Epoch [24/50], Loss: 0.2928, Val Accuracy: 0.8714
+Epoch [25/50], Loss: 0.3003, Val Accuracy: 0.8778
+Epoch [26/50], Loss: 0.2968, Val Accuracy: 0.8762
+Epoch [27/50], Loss: 0.2915, Val Accuracy: 0.8730
+Epoch [28/50], Loss: 0.2938, Val Accuracy: 0.8730
+Epoch [29/50], Loss: 0.2936, Val Accuracy: 0.8746
+Epoch [30/50], Loss: 0.2932, Val Accuracy: 0.8730
+Epoch [31/50], Loss: 0.2959, Val Accuracy: 0.8714
+Epoch [32/50], Loss: 0.2953, Val Accuracy: 0.8762
+Epoch [33/50], Loss: 0.2867, Val Accuracy: 0.8667
+Epoch [34/50], Loss: 0.2871, Val Accuracy: 0.8730
+Epoch [35/50], Loss: 0.2937, Val Accuracy: 0.8746
+Epoch [36/50], Loss: 0.2936, Val Accuracy: 0.8762
+Epoch [37/50], Loss: 0.2861, Val Accuracy: 0.8746
+Epoch [38/50], Loss: 0.2897, Val Accuracy: 0.8794
+Epoch [39/50], Loss: 0.2898, Val Accuracy: 0.8746
+Epoch [40/50], Loss: 0.2855, Val Accuracy: 0.8810
+Epoch [41/50], Loss: 0.2774, Val Accuracy: 0.8746
+Epoch [42/50], Loss: 0.2825, Val Accuracy: 0.8778
+Epoch [43/50], Loss: 0.2891, Val Accuracy: 0.8762
+Epoch [44/50], Loss: 0.2819, Val Accuracy: 0.8810
+Epoch [45/50], Loss: 0.2882, Val Accuracy: 0.8746
+Epoch [46/50], Loss: 0.2847, Val Accuracy: 0.8714
+Epoch [47/50], Loss: 0.2886, Val Accuracy: 0.8778
+Epoch [48/50], Loss: 0.2837, Val Accuracy: 0.8810
+Epoch [49/50], Loss: 0.2897, Val Accuracy: 0.8746
+Epoch [50/50], Loss: 0.2811, Val Accuracy: 0.8746
+Best validation accuracy: 0.8841
+Test accuracy: 0.8563
+Training complete. Best model saved as best_mlp_model.pth.
+
+Process finished with exit code 0
+
+Hidden Size 256:
+C:\Users\Chayce\AppData\Local\Microsoft\WindowsApps\python3.13.exe C:\Users\Chayce\Documents\CollegeFinalSemester\MachineLearning\HW3\code\main.py 
+Epoch [1/50], Loss: 0.7534, Val Accuracy: 0.8587
+Epoch [2/50], Loss: 0.3959, Val Accuracy: 0.8841
+Epoch [3/50], Loss: 0.3401, Val Accuracy: 0.8841
+Epoch [4/50], Loss: 0.3377, Val Accuracy: 0.8794
+Epoch [5/50], Loss: 0.3353, Val Accuracy: 0.8794
+Epoch [6/50], Loss: 0.3291, Val Accuracy: 0.8794
+Epoch [7/50], Loss: 0.3122, Val Accuracy: 0.8810
+Epoch [8/50], Loss: 0.3032, Val Accuracy: 0.8810
+Epoch [9/50], Loss: 0.3027, Val Accuracy: 0.8810
+Epoch [10/50], Loss: 0.3015, Val Accuracy: 0.8762
+Epoch [11/50], Loss: 0.3054, Val Accuracy: 0.8698
+Epoch [12/50], Loss: 0.3036, Val Accuracy: 0.8730
+Epoch [13/50], Loss: 0.2928, Val Accuracy: 0.8651
+Epoch [14/50], Loss: 0.3018, Val Accuracy: 0.8683
+Epoch [15/50], Loss: 0.2885, Val Accuracy: 0.8746
+Epoch [16/50], Loss: 0.2986, Val Accuracy: 0.8683
+Epoch [17/50], Loss: 0.2873, Val Accuracy: 0.8651
+Epoch [18/50], Loss: 0.2879, Val Accuracy: 0.8635
+Epoch [19/50], Loss: 0.2917, Val Accuracy: 0.8651
+Epoch [20/50], Loss: 0.2958, Val Accuracy: 0.8635
+Epoch [21/50], Loss: 0.2915, Val Accuracy: 0.8698
+Epoch [22/50], Loss: 0.2924, Val Accuracy: 0.8651
+Epoch [23/50], Loss: 0.2927, Val Accuracy: 0.8667
+Epoch [24/50], Loss: 0.2878, Val Accuracy: 0.8651
+Epoch [25/50], Loss: 0.2849, Val Accuracy: 0.8667
+Epoch [26/50], Loss: 0.2820, Val Accuracy: 0.8683
+Epoch [27/50], Loss: 0.2803, Val Accuracy: 0.8651
+Epoch [28/50], Loss: 0.2855, Val Accuracy: 0.8667
+Epoch [29/50], Loss: 0.2828, Val Accuracy: 0.8635
+Epoch [30/50], Loss: 0.2790, Val Accuracy: 0.8651
+Epoch [31/50], Loss: 0.2839, Val Accuracy: 0.8730
+Epoch [32/50], Loss: 0.2789, Val Accuracy: 0.8667
+Epoch [33/50], Loss: 0.2888, Val Accuracy: 0.8698
+Epoch [34/50], Loss: 0.2789, Val Accuracy: 0.8667
+Epoch [35/50], Loss: 0.2800, Val Accuracy: 0.8683
+Epoch [36/50], Loss: 0.2802, Val Accuracy: 0.8714
+Epoch [37/50], Loss: 0.2848, Val Accuracy: 0.8667
+Epoch [38/50], Loss: 0.2864, Val Accuracy: 0.8714
+Epoch [39/50], Loss: 0.2791, Val Accuracy: 0.8698
+Epoch [40/50], Loss: 0.2778, Val Accuracy: 0.8794
+Epoch [41/50], Loss: 0.2808, Val Accuracy: 0.8730
+Epoch [42/50], Loss: 0.2753, Val Accuracy: 0.8683
+Epoch [43/50], Loss: 0.2791, Val Accuracy: 0.8730
+Epoch [44/50], Loss: 0.2781, Val Accuracy: 0.8730
+Epoch [45/50], Loss: 0.2798, Val Accuracy: 0.8683
+Epoch [46/50], Loss: 0.2754, Val Accuracy: 0.8730
+Epoch [47/50], Loss: 0.2813, Val Accuracy: 0.8778
+Epoch [48/50], Loss: 0.2754, Val Accuracy: 0.8667
+Epoch [49/50], Loss: 0.2824, Val Accuracy: 0.8778
+Epoch [50/50], Loss: 0.2800, Val Accuracy: 0.8698
+Best validation accuracy: 0.8841
+Test accuracy: 0.8563
+Training complete. Best model saved as best_mlp_model.pth.
+
+Process finished with exit code 0
