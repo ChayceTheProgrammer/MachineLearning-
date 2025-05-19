@@ -1,0 +1,66 @@
+# Comparative Analysis for Question 4: LeNet for CIFAR-10 Image Recognition
+
+## Introduction
+This analysis compares two approaches to training LeNet on the CIFAR-10 dataset as required by part (d) of problem 4:
+1. **Model 1**: Using normalization preprocessing with the full LeNet architecture (including BatchNorm and Dropout)
+2. **Model 2**: Using rescaling preprocessing without BatchNorm and Dropout
+
+## Training Performance Analysis
+
+### Training and Validation Metrics
+
+| Metric | Model 1 (Normalized with BN+Dropout) | Model 2 (Rescaled without BN+Dropout) |
+|--------|--------------------------------------|---------------------------------------|
+| Initial validation accuracy (Epoch 1) | 53.22% | 46.22% |
+| Final validation accuracy (Epoch 20) | 67.02% | 63.56% |
+| Peak validation accuracy | 68.14% (Epoch 10) | 64.08% (Epoch 11) |
+| Final test accuracy | 66.10% | 62.61% |
+| Epoch to reach 60% validation | Epoch 3 | Epoch 5 |
+
+### Training Dynamics
+
+The training logs reveal several important differences in how the two models learned:
+
+1. **Convergence Rate**:
+   - Model 1 converged faster, reaching higher validation accuracy in early epochs
+   - Model 1 showed a steeper initial learning curve
+
+2. **Loss Behavior**:
+   - Model 1 started with a loss of approximately 1.39 and reduced to 0.49
+   - Model 2 started with a higher loss of 1.55 and ended at around 0.63
+   - Both models showed fluctuations in loss, but Model 1's fluctuations were more pronounced, likely due to the regularization effect of Dropout
+
+3. **Training Speed**:
+   - Model 2 processed more batches per second (80-87 it/s vs. 55-70 it/s for Model 1)
+   - This is expected as BatchNorm and Dropout add computational overhead during training
+
+## Impact Analysis of Normalization, BatchNorm, and Dropout
+
+The 3.49% absolute improvement in test accuracy (66.10% vs. 62.61%) can be attributed to three complementary factors:
+
+### 1. Normalization Preprocessing
+- **Statistical Advantage**: Normalizing each image (mean=0, variance=1) helps the network focus on the structure rather than absolute pixel values
+- **Robustness**: Makes the model less sensitive to variations in lighting and contrast across images
+- **Optimization Effect**: Centered and scaled inputs improve gradient flow through the network
+
+### 2. Batch Normalization Benefits
+- **Reduced Internal Covariate Shift**: Stabilizes the distribution of activations between layers
+- **Optimization Improvement**: Creates a smoother optimization landscape that allows for faster and more stable convergence
+- **Regularization Effect**: Adds a small amount of noise to layer activations during training
+- **Initialization Insensitivity**: Makes the network less sensitive to poor weight initialization
+
+### 3. Dropout Advantages
+- **Co-adaptation Prevention**: Prevents neurons from becoming too dependent on each other
+- **Ensemble Effect**: Effectively trains an ensemble of many sub-networks, which combine at test time
+- **Feature Robustness**: Forces the network to learn more robust and distributed representations
+- **Regularization**: Significantly reduces overfitting, especially important with limited training data
+
+## Conclusion
+
+The experimental results clearly demonstrate the advantages of using normalization preprocessing in combination with BatchNorm and Dropout for training CNN models on the CIFAR-10 dataset. This combination of techniques provides several complementary benefits:
+
+1. **Higher Accuracy**: A substantial 3.49% absolute improvement in test accuracy
+2. **Faster Learning**: Quicker convergence to higher accuracy levels
+3. **Better Generalization**: Improved model robustness and reduced overfitting
+
+These results align with modern deep learning best practices, which commonly incorporate these normalization and regularization techniques as standard components in neural network architectures for image recognition tasks.
