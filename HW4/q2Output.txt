@@ -1,0 +1,36 @@
+Analysis of Residual Block from Problem 2:
+=========================================
+
+(a) Projection Shortcut Analysis:
+-------------------------------
+The skip connection needs to match dimensions from input to output for addition.
+Input: 128 feature maps
+Output: 256 feature maps
+First conv uses stride=2, which reduces spatial dimensions by half.
+
+Two issues that prevent direct addition:
+1. Different number of feature maps (128 vs 256)
+2. Different spatial dimensions due to stride=2
+
+Required projection shortcut:
+A 1x1 convolution with stride=2 that projects 128 feature maps to 256 feature maps
+while also reducing spatial dimensions by half to match the main path.
+
+(b) Parameter Count Calculation:
+------------------------------
+First conv layer (3x3, stride=2, 128→256):
+  Filter size: 3x3x128
+  Number of filters: 256
+  Parameters: 3 × 3 × 128 × 256 = 294,912
+
+Second conv layer (3x3, stride=1, 256→256):
+  Filter size: 3x3x256
+  Number of filters: 256
+  Parameters: 3 × 3 × 256 × 256 = 589,824
+
+Projection shortcut (1x1, stride=2, 128→256):
+  Filter size: 1x1x128
+  Number of filters: 256
+  Parameters: 1 × 1 × 128 × 256 = 32,768
+
+Total trainable parameters: 294,912 + 589,824 + 32,768 = 917,504

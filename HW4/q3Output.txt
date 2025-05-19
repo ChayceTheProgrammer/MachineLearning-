@@ -1,0 +1,41 @@
+Batch Normalization Analysis - Problem 3
+
+Feature means: [13.  5.  0.]
+Feature variances: [ 1. 25. 25.]
+
+Part (a): z_hat matrix (3x4):
+[[-1.  1.  1. -1.]
+ [-1.  1.  1. -1.]
+ [-1.  1.  1. -1.]]
+
+Part (b): z_tilde matrix (3x4):
+[[ -1   1   1  -1]
+ [-11  -9  -9 -11]
+ [  9  11  11   9]]
+
+Part (c): Differences between batch normalization during training and testing:
+1. During training:
+   - Batch normalization uses statistics (mean and variance) computed from the current mini-batch
+   - These batch statistics are used for normalization in the forward pass
+   - Running averages of means and variances are updated for later use in testing
+   - This introduces noise that acts as regularization and helps with training
+
+2. During testing:
+   - Instead of batch statistics, the stored population statistics (running mean and variance)
+     accumulated during training are used
+   - This ensures consistent normalization regardless of test batch size
+   - No further updates to the running statistics occur
+   - The model behaves deterministically, without the regularizing noise of batch statistics
+
+Part (d): How batch size during testing affects testing results:
+1. When using population statistics (standard practice):
+   - The batch size during testing should have no effect on results
+   - Each sample is normalized using the same fixed statistics regardless of batch size
+   - This allows for consistent inference even with a single sample
+
+2. If batch statistics were used during testing (not standard practice):
+   - Smaller batch sizes would lead to less reliable statistics
+   - Results would be inconsistent and depend on which samples are batched together
+   - Performance would likely degrade as batch size decreases
+   - Single-sample inference would be impossible as variance cannot be calculated
+   - Different inferences on the same input would be possible depending on the batch

@@ -55,7 +55,7 @@ def main():
 
     # Load tokenizer from saved vocabulary
     tokenizer = SimpleTokenizer(max_length=128)
-    tokenizer_path = './tokenizer/simple_vocab.json'
+    tokenizer_path = 'code/tokenizer/simple_vocab.json'
     tokenizer.load_vocab(tokenizer_path)
     tokenizer.reverse_vocab = {v: k for k, v in tokenizer.vocab.items()}
 

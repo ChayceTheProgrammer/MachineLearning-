@@ -91,7 +91,7 @@ class TrigramTransformerBlock(nn.Module):
 
 
 class TrigramGPT(nn.Module):
-    """GPT-like model restricted to trigram context window"""
+    """GPT-like model restricted to the trigram context window"""
 
     def __init__(
             self,
@@ -300,3 +300,30 @@ if __name__ == "__main__":
     print("1. In standard transformer: each token can attend to all previous tokens")
     print("2. In trigram transformer: each token can only attend to itself and previous two tokens")
     print("3. Implementation difference: modified attention mask restricts the context window")
+
+"""
+
+Visualizing attention masks to compare standard causal attention vs trigram attention...
+
+Training and evaluating trigram language model...
+Epoch 1/10, Loss: 4.4566
+Epoch 2/10, Loss: 4.3779
+Epoch 3/10, Loss: 4.3831
+Epoch 4/10, Loss: 4.3725
+Epoch 5/10, Loss: 4.3708
+Epoch 6/10, Loss: 4.3708
+Epoch 7/10, Loss: 4.3699
+Epoch 8/10, Loss: 4.3696
+Epoch 9/10, Loss: 4.3695
+Epoch 10/10, Loss: 4.3693
+
+Text generation example:
+Generated sequence:
+[[ 1  2  3 17 56 96 73 22 46 61 71  4 40 89 84 72 64 29  2 83 18 10 45]]
+
+Differences between standard transformer and trigram transformer:
+1. In standard transformer: each token can attend to all previous tokens
+2. In trigram transformer: each token can only attend to itself and previous two tokens
+3. Implementation difference: modified attention mask restricts the context window
+
+"""

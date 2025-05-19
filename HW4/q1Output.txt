@@ -1,0 +1,17 @@
+Problem:
+A single (15×15×3) image is passed through a convolutional layer with 28 filters,
+each of size (3×3×3). The padding size is 1 (1 unit at top, bottom, left, and right)
+and the stride size is also 1.
+
+Solution:
+1. Output Feature Map Size: 15×15×28
+   Explanation: Using the formula (N-size − F-size + 2*(Padding) )/(Stride) + 1 for both height and width:
+   Height: (15-3+2*1)/1+1 = 15
+   Width: (15-3+2*1)/1+1 = 15
+   Depth: Number of filters = 28
+   Therefore, output volume is 15×15×28
+
+2. Number of Parameters:
+   Parameters per filter: (3×3×3) weights + 1 bias = 28 weights + 1 bias = 29
+   Total parameters: 29 × 28 filters = 784
+   This can also be calculated as: (3×3×3×28) + 28 = 756 + 28 = 784

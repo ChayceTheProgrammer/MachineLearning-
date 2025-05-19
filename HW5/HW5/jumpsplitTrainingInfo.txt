@@ -1,0 +1,296 @@
+python main.py --task train --run_name jump_split --data_split addprim_jump --n_layer 2 --n_head 2 --n_embd 16 --max_epochs 60 --batch_size 32 --num_workers 8 --learning_rate 4e-4 --max_len 128 --seed 44 --grad_norm_clip 1.0
+No GPU available, falling back to CPU
+Downloading data: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.58M/2.58M [00:00<00:00, 6.73MB/s]
+Downloading data: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.53M/1.53M [00:00<00:00, 10.6MB/s]
+Generating train split: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 14670/14670 [00:00<00:00, 38915.85 examples/s]
+Generating test split: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 7706/7706 [00:00<00:00, 53547.12 examples/s]
+Building tokenizer at ./tokenizer/addprim_jump_vocab.json.
+Building tokenizer for actions: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 14670/14670 [00:00<00:00, 30098.02it/s]
+Building tokenizer for commands: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████| 14670/14670 [00:00<00:00, 30268.35it/s]
+tokenizer saved
+{'<pad>': 0, '<s>': 1, '</s>': 2, '<unk>': 3, 'I_JUMP': 4, 'I_TURN_RIGHT': 5, 'I_LOOK': 6, 'I_TURN_LEFT': 7, 'I_WALK': 8, 'I_RUN': 9, 'jump': 10, 'look': 11, 'opposite': 12, 'right': 13, 'thrice': 14, 'and': 15, 'walk': 16, 'left': 17, 'run': 18, 'after': 19, 'twice': 20, 'turn': 21, 'around': 22}
+train dataset size: 13203
+val dataset size: 1467
+loading model
+total params: 9408
+C:\Users\Chayce\Documents\CollegeFinalSemester\MachineLearning\HW5\HW5\code\trainer.py:79: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler()
+C:\Users\Chayce\AppData\Roaming\Python\Python312\site-packages\torch\amp\grad_scaler.py:132: UserWarning: torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.
+  warnings.warn(
+epoch 1 iter 0: train loss 0.00000. lr 0.0000e+00:   0%|                                                                                                   | 0/413 [00:00<?, ?it/s]C
+:\Users\Chayce\Documents\CollegeFinalSemester\MachineLearning\HW5\HW5\code\trainer.py:102: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast():
+C:\Users\Chayce\AppData\Roaming\Python\Python312\site-packages\torch\amp\autocast_mode.py:266: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn(
+epoch 1 iter 412: train loss 1.41066. lr 3.9978e-04: 100%|███████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 24.85it/s]
+test loss: %f 1.3522288047749063
+epoch_valid_loss: 1.3522288047749063, epoch_train_loss: 2.031510356552087, epoch: 1
+Saving at epoch 1: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 1.1333833932876587 train_step: 500, learning_rate: 0.00039966494942057356                                                        | 86/413 [00:03<00:12, 26.94it/s]
+epoch 2 iter 412: train loss 0.88993. lr 3.9902e-04: 100%|███████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.05it/s]
+test loss: %f 0.794186031040938
+epoch_valid_loss: 0.794186031040938, epoch_train_loss: 1.0417945309932237, epoch: 2
+Saving at epoch 2: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.7617142200469971 train_step: 1000, learning_rate: 0.00039854005329423314███▍                                                  | 173/413 [00:06<00:08, 27.23it/s]
+epoch 3 iter 412: train loss 0.72993. lr 3.9773e-04: 100%|███████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.25it/s]
+test loss: %f 0.6714309415091639
+epoch_valid_loss: 0.6714309415091639, epoch_train_loss: 0.799130122684682, epoch: 3
+Saving at epoch 3: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.6928979754447937 train_step: 1500, learning_rate: 0.0003966271561634415██████████████████████▊                                | 260/413 [00:09<00:05, 27.70it/s]
+epoch 4 iter 412: train loss 0.68271. lr 3.9590e-04: 100%|███████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.28it/s]
+test loss: %f 0.6079351765953976
+epoch_valid_loss: 0.6079351765953976, epoch_train_loss: 0.730230902355462, epoch: 4
+Saving at epoch 4: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.6557028889656067 train_step: 2000, learning_rate: 0.0003939338503183291█████████████████████████████████████████              | 347/413 [00:12<00:02, 27.45it/s]
+epoch 5 iter 412: train loss 0.58654. lr 3.9354e-04: 100%|███████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.41it/s]
+test loss: %f 0.5832546657842138
+epoch_valid_loss: 0.5832546657842138, epoch_train_loss: 0.6889764375028541, epoch: 5
+Saving at epoch 5: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+epoch 6 iter 412: train loss 0.61355. lr 3.9065e-04: 100%|███████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.16it/s]
+test loss: %f 0.5472460609415303
+epoch_valid_loss: 0.5472460609415303, epoch_train_loss: 0.6634222075667855, epoch: 6
+Saving at epoch 6: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.6789405345916748 train_step: 2500, learning_rate: 0.0003904739496599693                                                        | 20/413 [00:00<00:16, 23.81it/s]
+epoch 7 iter 412: train loss 0.65060. lr 3.8725e-04: 100%|███████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.43it/s]
+test loss: %f 0.5342596335255582
+epoch_valid_loss: 0.5342596335255582, epoch_train_loss: 0.6464074633600637, epoch: 7
+Saving at epoch 7: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.6719090342521667 train_step: 3000, learning_rate: 0.0003862555585368648                                                       | 107/413 [00:04<00:11, 27.44it/s]
+epoch 8 iter 412: train loss 0.67747. lr 3.8334e-04: 100%|███████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.42it/s]
+test loss: %f 0.5064147730236468
+epoch_valid_loss: 0.5064147730236468, epoch_train_loss: 0.6290081976112384, epoch: 8
+Saving at epoch 8: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.5223168134689331 train_step: 3500, learning_rate: 0.0003812979233347176████████▊                                              | 194/413 [00:07<00:07, 27.93it/s]
+epoch 9 iter 412: train loss 0.65615. lr 3.7893e-04: 100%|███████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.35it/s]
+test loss: %f 0.4914279275614282
+epoch_valid_loss: 0.4914279275614282, epoch_train_loss: 0.6162610066283413, epoch: 9
+Saving at epoch 9: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.6501168012619019 train_step: 4000, learning_rate: 0.00037562072079497927██████████████████████████▉                           | 283/413 [00:10<00:04, 27.50it/s]
+epoch 10 iter 412: train loss 0.69187. lr 3.7405e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.43it/s]
+test loss: %f 0.46965566795805225
+epoch_valid_loss: 0.46965566795805225, epoch_train_loss: 0.6041386223445504, epoch: 10
+Saving at epoch 10: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.6576071977615356 train_step: 4500, learning_rate: 0.0003692464836055114█████████████████████████████████████████████▋         | 368/413 [00:13<00:01, 27.51it/s]
+epoch 11 iter 412: train loss 0.74595. lr 3.6869e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.30it/s]
+test loss: %f 0.4638578081908433
+epoch_valid_loss: 0.4638578081908433, epoch_train_loss: 0.5925910050008834, epoch: 11
+Saving at epoch 11: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+epoch 12 iter 412: train loss 0.66672. lr 3.6287e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 24.44it/s]
+test loss: %f 0.4420263190632281
+epoch_valid_loss: 0.4420263190632281, epoch_train_loss: 0.58008401445846, epoch: 12
+Saving at epoch 12: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.5890619158744812 train_step: 5000, learning_rate: 0.0003622065059745662                                                        | 44/413 [00:01<00:14, 24.66it/s]
+epoch 13 iter 412: train loss 0.49256. lr 3.5661e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.37it/s]
+test loss: %f 0.4386257062787595
+epoch_valid_loss: 0.4386257062787595, epoch_train_loss: 0.570319776240619, epoch: 13
+Saving at epoch 13: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.5898802876472473 train_step: 5500, learning_rate: 0.00035451727856479693                                                      | 131/413 [00:05<00:09, 28.31it/s]
+epoch 14 iter 412: train loss 0.64943. lr 3.4993e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.57it/s]
+test loss: %f 0.4265173420957897
+epoch_valid_loss: 0.4265173420957897, epoch_train_loss: 0.5593199990419152, epoch: 14
+Saving at epoch 14: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.5685380697250366 train_step: 6000, learning_rate: 0.0003462147677219963██████████████▍                                        | 218/413 [00:08<00:07, 26.86it/s]
+epoch 15 iter 412: train loss 0.64623. lr 3.4284e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.33it/s]
+test loss: %f 0.4086618177268816
+epoch_valid_loss: 0.4086618177268816, epoch_train_loss: 0.5506598017839196, epoch: 15
+Saving at epoch 15: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.47740691900253296 train_step: 6500, learning_rate: 0.0003373319332174821███████████████████████████████▌                      | 305/413 [00:11<00:03, 27.93it/s]
+epoch 16 iter 412: train loss 0.52655. lr 3.3536e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.45it/s]
+test loss: %f 0.40799939308477484
+epoch_valid_loss: 0.40799939308477484, epoch_train_loss: 0.5400579004541725, epoch: 16
+Saving at epoch 16: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.49540743231773376 train_step: 7000, learning_rate: 0.00032790404039756746████████████████████████████████████████████████▏    | 390/413 [00:14<00:00, 27.86it/s]
+epoch 17 iter 412: train loss 0.60357. lr 3.2752e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.27it/s]
+test loss: %f 0.41461472925932513
+epoch_valid_loss: 0.41461472925932513, epoch_train_loss: 0.5326640766123016, epoch: 17
+epoch 18 iter 412: train loss 0.51466. lr 3.1934e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.33it/s]
+test loss: %f 0.39191359475902887
+epoch_valid_loss: 0.39191359475902887, epoch_train_loss: 0.5248554672225046, epoch: 18
+Saving at epoch 18: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.5124791860580444 train_step: 7500, learning_rate: 0.0003179767697173972                                                        | 66/413 [00:02<00:14, 23.90it/s]
+epoch 19 iter 412: train loss 0.57030. lr 3.1083e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 24.71it/s]
+test loss: %f 0.3935422340165014
+epoch_valid_loss: 0.3935422340165014, epoch_train_loss: 0.5180157233237066, epoch: 19
+step_train_loss: 0.4581458866596222 train_step: 8000, learning_rate: 0.0003075733688473864▋                                                      | 152/413 [00:05<00:09, 27.84it/s]
+epoch 20 iter 412: train loss 0.51673. lr 3.0202e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.08it/s]
+test loss: %f 0.37509436387082806
+epoch_valid_loss: 0.37509436387082806, epoch_train_loss: 0.5110751435918323, epoch: 20
+Saving at epoch 20: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.5940280556678772 train_step: 8500, learning_rate: 0.00029674303303020035█████████████████▊                                    | 239/413 [00:09<00:07, 22.86it/s]
+epoch 21 iter 412: train loss 0.55416. lr 2.9293e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:17<00:00, 23.20it/s]
+test loss: %f 0.36341058624827344
+epoch_valid_loss: 0.36341058624827344, epoch_train_loss: 0.4994190875034933, epoch: 21
+Saving at epoch 21: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.531243085861206 train_step: 9000, learning_rate: 0.00028552871622647814████████████████████████████████████▉                  | 326/413 [00:12<00:03, 27.44it/s]
+epoch 22 iter 412: train loss 0.54625. lr 2.8359e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.03it/s]
+test loss: %f 0.34742255897625635
+epoch_valid_loss: 0.34742255897625635, epoch_train_loss: 0.4906464040856673, epoch: 22
+Saving at epoch 22: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+epoch 23 iter 412: train loss 0.50860. lr 2.7403e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.39it/s]
+test loss: %f 0.35364692755367444
+epoch_valid_loss: 0.35364692755367444, epoch_train_loss: 0.48471905236960033, epoch: 23
+step_train_loss: 0.5496043562889099 train_step: 9500, learning_rate: 0.0002739844415847242                                                                 | 0/413 [00:00<?, ?it/s]
+epoch 24 iter 412: train loss 0.44974. lr 2.6427e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.30it/s]
+test loss: %f 0.33797925062801526
+epoch_valid_loss: 0.33797925062801526, epoch_train_loss: 0.47837538616709213, epoch: 24
+Saving at epoch 24: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.4990847706794739 train_step: 10000, learning_rate: 0.00026213727841585267                                                      | 86/413 [00:03<00:11, 27.72it/s]
+epoch 25 iter 412: train loss 0.57195. lr 2.5433e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.45it/s]
+test loss: %f 0.3360501618488975
+epoch_valid_loss: 0.3360501618488975, epoch_train_loss: 0.4735336785743658, epoch: 25
+Saving at epoch 25: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.4679524004459381 train_step: 10500, learning_rate: 0.00025004349404391703███▍                                                 | 175/413 [00:06<00:08, 28.02it/s]
+epoch 26 iter 412: train loss 0.41751. lr 2.4424e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.50it/s]
+test loss: %f 0.3405913574540097
+epoch_valid_loss: 0.3405913574540097, epoch_train_loss: 0.4671829590352915, epoch: 26
+step_train_loss: 0.5518253445625305 train_step: 11000, learning_rate: 0.00023775108837698295█████████████████████▏                               | 260/413 [00:09<00:05, 27.46it/s]
+epoch 27 iter 412: train loss 0.59478. lr 2.3404e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.55it/s]
+test loss: %f 0.31950214764346246
+epoch_valid_loss: 0.31950214764346246, epoch_train_loss: 0.462340919576026, epoch: 27
+Saving at epoch 27: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.4425722658634186 train_step: 11500, learning_rate: 0.00022530882501797897███████████████████████████████████████▎             | 347/413 [00:12<00:02, 27.78it/s]
+epoch 28 iter 412: train loss 0.36592. lr 2.2374e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.43it/s]
+test loss: %f 0.31685349895902304
+epoch_valid_loss: 0.31685349895902304, epoch_train_loss: 0.4548256896598576, epoch: 28
+Saving at epoch 28: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+epoch 29 iter 412: train loss 0.49876. lr 2.1338e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.64it/s]
+test loss: %f 0.31382313759430597
+epoch_valid_loss: 0.31382313759430597, epoch_train_loss: 0.45254159753028184, epoch: 29
+Saving at epoch 29: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.4252122640609741 train_step: 12000, learning_rate: 0.00021277636875829337                                                      | 23/413 [00:00<00:16, 24.20it/s]
+epoch 30 iter 412: train loss 0.39044. lr 2.0298e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.43it/s]
+test loss: %f 0.30880193962999014
+epoch_valid_loss: 0.30880193962999014, epoch_train_loss: 0.44593343297448057, epoch: 30
+Saving at epoch 30: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.5463643670082092 train_step: 12500, learning_rate: 0.00020018300736951642                                                     | 110/413 [00:04<00:10, 27.85it/s]
+epoch 31 iter 412: train loss 0.36874. lr 1.9258e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.39it/s]
+test loss: %f 0.3018396250579668
+epoch_valid_loss: 0.3018396250579668, epoch_train_loss: 0.44476848775768973, epoch: 31
+Saving at epoch 31: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.44779160618782043 train_step: 13000, learning_rate: 0.000187588944406008█████████                                             | 197/413 [00:07<00:09, 23.23it/s]
+epoch 32 iter 412: train loss 0.41807. lr 1.8219e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.16it/s]
+test loss: %f 0.2955654700813086
+epoch_valid_loss: 0.2955654700813086, epoch_train_loss: 0.4381289888380803, epoch: 32
+Saving at epoch 32: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.45385029911994934 train_step: 13500, learning_rate: 0.00017504414059159524████████████████████████▋                           | 282/413 [00:10<00:04, 27.48it/s]
+epoch 33 iter 412: train loss 0.47014. lr 1.7185e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.35it/s]
+test loss: %f 0.29456734495318454
+epoch_valid_loss: 0.29456734495318454, epoch_train_loss: 0.4330199863085158, epoch: 33
+Saving at epoch 33: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.3617713749408722 train_step: 14000, learning_rate: 0.00016259838591849837████████████████████████████████████████████         | 370/413 [00:13<00:01, 26.94it/s]
+epoch 34 iter 412: train loss 0.55475. lr 1.6159e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.35it/s]
+test loss: %f 0.2850846644976865
+epoch_valid_loss: 0.2850846644976865, epoch_train_loss: 0.4279457415853228, epoch: 34
+Saving at epoch 34: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+epoch 35 iter 412: train loss 0.39602. lr 1.5144e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.11it/s]
+test loss: %f 0.2822332210514856
+epoch_valid_loss: 0.2822332210514856, epoch_train_loss: 0.4256126903015534, epoch: 35
+Saving at epoch 35: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.49263158440589905 train_step: 14500, learning_rate: 0.00015031098534443494                                                     | 44/413 [00:01<00:14, 24.89it/s]
+epoch 36 iter 412: train loss 0.39873. lr 1.4141e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.36it/s]
+test loss: %f 0.2877845841905345
+epoch_valid_loss: 0.2877845841905345, epoch_train_loss: 0.421488668886859, epoch: 36
+step_train_loss: 0.4099152386188507 train_step: 15000, learning_rate: 0.00013821075068104198                                                     | 131/413 [00:05<00:10, 27.55it/s]
+epoch 37 iter 412: train loss 0.38533. lr 1.3154e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.44it/s]
+test loss: %f 0.27994256434233294
+epoch_valid_loss: 0.27994256434233294, epoch_train_loss: 0.41676252055687707, epoch: 37
+Saving at epoch 37: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.39495792984962463 train_step: 15500, learning_rate: 0.000126355755902497█████████████▍                                        | 218/413 [00:08<00:07, 27.63it/s]
+epoch 38 iter 412: train loss 0.33011. lr 1.2186e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.40it/s]
+test loss: %f 0.2684429453118988
+epoch_valid_loss: 0.2684429453118988, epoch_train_loss: 0.41423676796167297, epoch: 38
+Saving at epoch 38: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.3858374357223511 train_step: 16000, learning_rate: 0.00011479303070585325██████████████████████████████▌                      | 305/413 [00:11<00:04, 26.76it/s]
+epoch 39 iter 412: train loss 0.35190. lr 1.1239e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.06it/s]
+test loss: %f 0.26945507785548334
+epoch_valid_loss: 0.26945507785548334, epoch_train_loss: 0.41312803815121224, epoch: 39
+step_train_loss: 0.32704541087150574 train_step: 16500, learning_rate: 0.00010356851278386925███████████████████████████████████████████████▋    | 392/413 [00:14<00:00, 27.60it/s]
+epoch 40 iter 412: train loss 0.45021. lr 1.0316e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.41it/s]
+test loss: %f 0.26365891034188477
+epoch_valid_loss: 0.26365891034188477, epoch_train_loss: 0.40933429199038635, epoch: 40
+Saving at epoch 40: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+epoch 41 iter 412: train loss 0.40435. lr 9.4187e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.50it/s]
+test loss: %f 0.2632236992535384
+epoch_valid_loss: 0.2632236992535384, epoch_train_loss: 0.40795230216033235, epoch: 41
+Saving at epoch 41: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.39137208461761475 train_step: 17000, learning_rate: 9.273536202219221e-05                                                      | 65/413 [00:02<00:13, 25.87it/s]
+epoch 42 iter 412: train loss 0.37685. lr 8.5503e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.34it/s]
+test loss: %f 0.2579678021695303
+epoch_valid_loss: 0.2579678021695303, epoch_train_loss: 0.40472955853829373, epoch: 42
+Saving at epoch 42: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.35596033930778503 train_step: 17500, learning_rate: 8.231900034480753e-05                                                     | 152/413 [00:05<00:09, 26.83it/s]
+epoch 43 iter 412: train loss 0.44662. lr 7.7128e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.24it/s]
+test loss: %f 0.2587260383626689
+epoch_valid_loss: 0.2587260383626689, epoch_train_loss: 0.4015691094190676, epoch: 43
+step_train_loss: 0.29161715507507324 train_step: 18000, learning_rate: 7.236967135128065e-05████████████████▊                                    | 239/413 [00:09<00:06, 26.16it/s]
+epoch 44 iter 412: train loss 0.44455. lr 6.9086e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.21it/s]
+test loss: %f 0.2603056314198867
+epoch_valid_loss: 0.2603056314198867, epoch_train_loss: 0.39932554115971985, epoch: 44
+step_train_loss: 0.434173047542572 train_step: 18500, learning_rate: 6.292690572814624e-05█████████████████████████████████████                  | 327/413 [00:12<00:03, 27.65it/s]
+epoch 45 iter 412: train loss 0.40934. lr 6.1399e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.29it/s]
+test loss: %f 0.25189799199933594
+epoch_valid_loss: 0.25189799199933594, epoch_train_loss: 0.39899293757235454, epoch: 45
+Saving at epoch 45: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+epoch 46 iter 412: train loss 0.37610. lr 5.4087e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.19it/s]
+test loss: %f 0.24714844220358392
+epoch_valid_loss: 0.24714844220358392, epoch_train_loss: 0.39401189481375004, epoch: 46
+Saving at epoch 46: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.4679276943206787 train_step: 19000, learning_rate: 5.403520827610582e-05                                                        | 2/413 [00:00<00:23, 17.86it/s]
+epoch 47 iter 412: train loss 0.32191. lr 4.7170e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.33it/s]
+test loss: %f 0.25345323979854584
+epoch_valid_loss: 0.25345323979854584, epoch_train_loss: 0.3948375324360106, epoch: 47
+step_train_loss: 0.4520566165447235 train_step: 19500, learning_rate: 4.5715390077938854e-05                                                      | 89/413 [00:03<00:13, 24.25it/s]
+epoch 48 iter 412: train loss 0.42323. lr 4.0667e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 24.48it/s]
+test loss: %f 0.24578694156978442
+epoch_valid_loss: 0.24578694156978442, epoch_train_loss: 0.39280336554056217, epoch: 48
+Saving at epoch 48: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.3859352767467499 train_step: 20000, learning_rate: 4e-05████████████████████▏                                                 | 174/413 [00:07<00:09, 26.00it/s]
+epoch 49 iter 412: train loss 0.47975. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:17<00:00, 24.21it/s]
+test loss: %f 0.24902800924104193
+epoch_valid_loss: 0.24902800924104193, epoch_train_loss: 0.39274765753139884, epoch: 49
+step_train_loss: 0.43008869886398315 train_step: 20500, learning_rate: 4e-05█████████████████████████████████████▊                               | 263/413 [00:10<00:05, 27.12it/s]
+epoch 50 iter 412: train loss 0.30138. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 24.86it/s]
+test loss: %f 0.24657340704098993
+epoch_valid_loss: 0.24657340704098993, epoch_train_loss: 0.3905023614228782, epoch: 50
+step_train_loss: 0.40143057703971863 train_step: 21000, learning_rate: 4e-05███████████████████████████████████████████████████████▍             | 348/413 [00:15<00:02, 23.17it/s]
+epoch 51 iter 412: train loss 0.39707. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:19<00:00, 21.31it/s]
+test loss: %f 0.24492810601773468
+epoch_valid_loss: 0.24492810601773468, epoch_train_loss: 0.3906634986472765, epoch: 51
+Saving at epoch 51: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+epoch 52 iter 412: train loss 0.43365. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:18<00:00, 22.72it/s]
+test loss: %f 0.24726986496344858
+epoch_valid_loss: 0.24726986496344858, epoch_train_loss: 0.3886719255845714, epoch: 52
+step_train_loss: 0.4209086000919342 train_step: 21500, learning_rate: 4e-05                                                                       | 23/413 [00:01<00:20, 18.82it/s]
+epoch 53 iter 412: train loss 0.34005. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:19<00:00, 21.21it/s]
+test loss: %f 0.247453977232394
+epoch_valid_loss: 0.247453977232394, epoch_train_loss: 0.3909942580626028, epoch: 53
+step_train_loss: 0.39988741278648376 train_step: 22000, learning_rate: 4e-05█████▋                                                               | 109/413 [00:04<00:12, 25.19it/s]
+epoch 54 iter 412: train loss 0.43174. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 24.96it/s]
+test loss: %f 0.24578128431154334
+epoch_valid_loss: 0.24578128431154334, epoch_train_loss: 0.39040085435202276, epoch: 54
+step_train_loss: 0.3142300844192505 train_step: 22500, learning_rate: 4e-05█████████████████████████                                             | 197/413 [00:07<00:07, 27.13it/s]
+epoch 55 iter 412: train loss 0.38318. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 24.80it/s]
+test loss: %f 0.24282590073087942
+epoch_valid_loss: 0.24282590073087942, epoch_train_loss: 0.38904161293050565, epoch: 55
+Saving at epoch 55: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.35718634724617004 train_step: 23000, learning_rate: 4e-05██████████████████████████████████████████▏                          | 284/413 [00:10<00:04, 28.21it/s]
+epoch 56 iter 412: train loss 0.45020. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.69it/s]
+test loss: %f 0.2423201537002688
+epoch_valid_loss: 0.2423201537002688, epoch_train_loss: 0.38743259730696966, epoch: 56
+Saving at epoch 56: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
+step_train_loss: 0.4419860541820526 train_step: 23500, learning_rate: 4e-05█████████████████████████████████████████████████████████████▎        | 371/413 [00:14<00:01, 27.83it/s]
+epoch 57 iter 412: train loss 0.38042. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 24.98it/s]
+test loss: %f 0.2449807777352955
+epoch_valid_loss: 0.2449807777352955, epoch_train_loss: 0.3870527968712638, epoch: 57
+epoch 58 iter 412: train loss 0.30742. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:18<00:00, 22.04it/s]
+test loss: %f 0.24279306083917618
+epoch_valid_loss: 0.24279306083917618, epoch_train_loss: 0.38834499901489833, epoch: 58
+step_train_loss: 0.3453693687915802 train_step: 24000, learning_rate: 4e-05                                                                       | 44/413 [00:01<00:15, 24.30it/s]
+epoch 59 iter 412: train loss 0.34860. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:16<00:00, 25.19it/s]
+test loss: %f 0.24373750129471655
+epoch_valid_loss: 0.24373750129471655, epoch_train_loss: 0.3863854018236188, epoch: 59
+step_train_loss: 0.3549240529537201 train_step: 24500, learning_rate: 4e-05███████████▋                                                          | 133/413 [00:05<00:11, 25.02it/s]
+epoch 60 iter 412: train loss 0.36386. lr 4.0000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████| 413/413 [00:17<00:00, 24.15it/s]
+test loss: %f 0.24116106979224994
+epoch_valid_loss: 0.24116106979224994, epoch_train_loss: 0.3859563932436142, epoch: 60
+Saving at epoch 60: ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
