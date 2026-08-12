@@ -1,0 +1,18 @@
+Baseline:
+python main.py --task train --run_name baseline_model --data_split simple --n_layer 2 --n_head 2 --n_embd 16 --max_epochs 60 --batch_size 32 --num_workers 8 --learning_rate 4e-4 --max_len 128 --seed 44 --grad_norm_clip 1.0
+
+More Layers
+python main.py --task train --run_name more_layers --data_split simple --n_layer 4 --n_head 2 --n_embd 16 --max_epochs 60 --batch_size 32 --num_workers 8 --learning_rate 4e-4 --max_len 128 --seed 44 --grad_norm_clip 1.0
+
+More attn Head
+python main.py --task train --run_name more_heads --data_split simple --n_layer 2 --n_head 4 --n_embd 16 --max_epochs 60 --batch_size 32 --num_workers 8 --learning_rate 4e-4 --max_len 128 --seed 44 --grad_norm_clip 1.0
+
+Larger Embedding Dimension
+python main.py --task train --run_name larger_embd --data_split simple --n_layer 2 --n_head 2 --n_embd 32 --max_epochs 60 --batch_size 32 --num_workers 8 --learning_rate 4e-4 --max_len 128 --seed 44 --grad_norm_clip 1.0
+
+Larger Overall Model
+python main.py --task train --run_name large_model --data_split simple --n_layer 4 --n_head 4 --n_embd 32 --max_epochs 60 --batch_size 32 --num_workers 8 --learning_rate 4e-4 --max_len 128 --seed 44 --grad_norm_clip 1.0
+
+
+addprim -train sequence
+python main.py --task generate --run_name jump_split --data_split addprim_jump --n_layer 2 --n_head 2 --n_embd 16 --max_len 128 --ckpt_path ./cond_gpt/weights/jump_split_addprim_jumpsplit_2layer_2head_16embd_32bs.pt
